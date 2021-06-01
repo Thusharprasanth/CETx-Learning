@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- ========================= SECTION MAIN ========================= -->
+<section class="section-intro padding-y-sm">
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="weltext" style="margin-top: 15%;">
+                <h1>
+                    Restless Learners <br><div style="color:  rgb(0, 86, 210);">change the world</div>
+                </h1>
+                <p style="margin-top: 5px;">Build skills with courses, certificates, and degrees online<br> from world-class universities and companies.</p>
+                <form class="d-flex">
+                    <div class="input-group" style="width: auto;">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <div class="input-group-append">
+                          <button class="btn btn-secondary" style="background-color: rgb(0, 86, 210);" type="button">
+                            <i class="fa fa-search"></i>
+                          </button>
+                        </div>
+                      </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6 welpic">
+           <img class="img-fluid" src="{% static 'images/banners/2.jpg' %}">
+        </div>
+    </div>
+
+</div> <!-- container //  -->
+</section>
+<!-- ========================= SECTION MAIN END// ========================= -->
+<section>
+    <div class="row" style="margin-top: 25px;">
+        
+          
+            <div class="col-md-4 pc1">
+              <img src="{% static 'images/study.png' %}" style="margin-left: auto; margin-right: auto; display: block;">
+              <h6 style="text-align: center; padding-top: 10px;">130,000 online courses</h6>
+              <p style="text-align: center;">Enjoy a variety of fresh topics</p>
+          </div>
+          <div class="col-md-4 pc2">
+              <img src="{% static 'images/teaching.png' %}" style="margin-left: auto; margin-right: auto; display: block;">
+              <h6 style="text-align: center; padding-top: 10px;">Expert instruction</h6>
+              <p style="text-align: center;">Find the right instructor for you</p>
+          </div>
+          <div class="col-md-4 pc3" >
+              <img src="{% static 'images/Icon-Earn-Degree.png' %}" style="margin-left: auto; margin-right: auto; display: block;">
+              <h6 style="text-align: center; padding-top: 10px;">Lifetime access</h6>
+              <p style="text-align: center;">Learn on your schedule</p>
+          </div>
+          
+        
+
+    </div>
+</section>
+<!-- ========================= SECTION  ========================= -->
+<section class="section-name padding-y-sm">
+<div class="container">
+    <hr >
+<header class="section-heading">
+	<a href="./store.html" class="btn btn-outline-primary float-right">See all</a>
+	<h3 class="section-title">Trending Courses</h3>
+</header><!-- sect-heading -->
+
+	
+<div class="row">
+  {% for course in courses %}
+	<div class="col-md-3">
+		<div class="card card-product-grid">
+			<a href="./product-detail.html" class="img-wrap"> <img src="{{ course.image.url }}"> </a>
+			<figcaption class="info-wrap">
+				<a href="./product-detail.html" class="title">{{ course.course_name }}</a>
+				<div class="price mt-1">Rs {{ course.price }}</div> <!-- price-wrap.// -->
+			</figcaption>
+		</div>
+	</div> <!-- col.// -->
+  {% endfor %}
+</div> <!-- row.// -->
+
+</div><!-- container // -->
+</section>
+<!-- ========================= SECTION  END// ========================= -->
+<!-- ========================= SECTION  start cetex// ========================= -->
+<section>
+    <div class="container" style="display: inline-flex;;
+    text-align: center;
+    color: white;margin-top: 25px;">
+      <img src="{% static 'images/learn.png' %}" alt="Snow" style="width:50%;height: 300px;">
+      <div style="margin-left: 10%;
+      margin-top: 1%;" class="top-right">
+        <p class="l1" style="font-size: 21px ; color: black; margin-top: 25px;    display: table;">With CETx Learning, you can:</p>
+        <p class="l2" style="color: black;    display: table;">&#10003 &nbsp Access 25+ expert-led courses</p>
+        <p class="l3" style="color: black;    display: table;">&#10003 &nbsp Real Time Doubt Resolution with Live Instructors</p>
+        <p class="l4" style="color: black;    display: table;">&#10003 &nbsp Learning Assistants to Guide When You Are Stuck</p>
+        <p class="l5" style="color: black;    display: table;">&#10003 &nbsp Receive course recommendations tailored to you</p>
+        <p class="l6" style="color: black;    display: table;">&#10003 &nbsp View courses anytime on your computer or phone</p>
+      </div>
+      
+    </div>
+  </section>
+  <!-- ========================= SECTION  END// ========================= -->
+  <section name='testimonials'>
+    <h1 style="    margin-top: 20px;
+    margin-bottom: -35px;margin-left: 15px;">From the CETX community</h1>
+    <div class="container mt-5">
+      <div style="    margin-top: 5%;
+      margin-bottom: 5%;" class="row">
+          <div class="col-md-4">
+              <div class="testimonial-1 rounded t1"><img class="mb-3" src="{% static 'images/ECXzJ1k.png' %}" width="40">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris<br><br></p>
+                  <div class="d-flex flex-row align-items-center"><img class="rounded-circle" src="{% static 'images/person.png' %}" width="40">
+                      <div class="ml-2 about"><span class="d-block name">Person 1</span><span class="place">Company 1</span></div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="testimonial-2 rounded t2"><img class="mb-3" src="{% static 'images/ECXzJ1k.png' %}" width="40">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris<br><br></p>
+                  <div class="d-flex flex-row align-items-center"><img class="rounded-circle" src="{% static 'images/person.png' %}" width="40">
+                      <div class="ml-2 about"><span class="d-block name">Person 2</span><span class="place-2">Company 2</span></div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="testimonial-1 rounded t3"><img class="mb-3" src="{% static 'images/ECXzJ1k.png' %}" width="40">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris<br><br></p>
+                  <div class="d-flex flex-row align-items-center"><img class="rounded-circle" src="{% static 'images/person.png' %}" width="40">
+                      <div class="ml-2 about"><span class="d-block name">Person 3</span><span class="place">Company 3</span></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  </section>
+  <section name='instructor'>
+    <div class="row" style="margin-top: 25px;">
+      <div class="col-md-6">
+        <img style="    width: 85%;
+        margin-left: 20px;
+        margin-bottom: 35px;" class="img-fluid" alt="Responsive image" src="{% static 'images/instructor.png' %}">
+      </div>
+    <div class="col-md-6 it" style="text-align: center;    margin-top: auto;
+    margin-bottom: auto;">
+      <h1>
+        Become an instructor
+      </h1>
+      <p>
+        Top instructors from around the world teach<br> millions of students on Udemy. We provide the<br> tools and skills to teach what you love.
+      </p>
+      <button type="button" class="btn btn-outline-primary ib">Start teaching today</button>
+
+    </div>
+    </div>
+  </section>
+</body>
+</html>
+{% endblock %}
