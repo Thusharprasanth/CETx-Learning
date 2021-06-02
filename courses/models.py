@@ -1,5 +1,6 @@
 from category.models import Category
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Course(models.Model):
@@ -14,6 +15,10 @@ class Course(models.Model):
     is_available = models.BooleanField(default=True)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
+
+
+    def get_url(self):
+        return reverse('course_details', args=[self.category.slug, self.slug])
 
     def __str__(self):
         return self.course_name
