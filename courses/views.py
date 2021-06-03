@@ -25,3 +25,15 @@ def course_details(request, category_slug, course_slug):
         'single_course' : single_course
     }
     return render(request,'store/course_details.html',context)
+
+def search(request):
+    if 'keyword' in request.GET:
+        keyword = request.GET['keyword']
+        if keyword:
+            courses = Course.objects.filter(course_name__icontains = keyword)
+            course_count = courses.count()
+    context = {
+        'courses' : courses,
+        'course_count' : course_count
+    }
+    return render(request, 'store/store.html', context)
