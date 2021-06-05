@@ -139,7 +139,7 @@
               <h4 style="font-size: 20px;" class="mr-1">&#8377  {{ course.price }}<del style="font-size: 11px;
                 margin-left: 3px;">&#8377 8640</del><span style="    font-size: 10px; margin-left: 3px;">(96% off)</span></h4>
                 </div>
-                <a href="#" class="btn btn-block btn-primary">Add to cart </a>	
+                <a href="{{ course.get_url }}" class="btn btn-block btn-primary">Details</a>	
           </div>
           </div>
         {% endfor %}

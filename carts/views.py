@@ -10,12 +10,32 @@ def _cart_id(request):
     return cart
 
 def cart(request):
+    total_price=0
+    tax = 0
+    grand_total = 0
     cart = Cart.objects.get(cart_id = _cart_id(request))
     cart_items = CartItem.objects.filter(cart = cart)
+    for cart_item in cart_items:
+        total_price += cart_item.course.price * cart_item.quantity
+        tax = round(0.2*total_price,2)
+        grand_total = total_price + tax
     context = {
-        'cart_items' : cart_items
+        'cart_items' : cart_items,
+        'total_price' : total_price,
+        'tax' : tax,
+        'grand_total' : grand_total
     }
     return render(request, 'store/carts.html', context)
+def remove_cart(request, course_id):
+    course = Course.objects.get(id=course_id)
+    cart = Cart.objects.get(cart_id=_cart_id(request))
+    cart_item = CartItem.objects.get(course = course, cart = cart)
+    if cart_item.quantity > 1:
+        cart_item.quantity -= 1
+        cart_item.save()
+    else:
+        cart_item.delete()
+    return redirect('cart')
 
 def add_cart(request, course_id):
     course = Course.objects.get(id=course_id)

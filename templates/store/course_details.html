@@ -30,7 +30,17 @@
     
     <hr>
         <hr>
-        <button class="btn  btn-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </button>
+        {% if single_course.stock <= 0 %}
+            <h3>Out of stock</h3>
+        {% else %}
+            {% if in_cart %}
+            <button class="btn  btn-success"> <span class="text">Go to cart</span> <i class="fas fa-shopping-cart"></i>  </button>
+            {% else %}
+            <button class="btn  btn-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </button>
+            {% endif %}
+            
+        {% endif %}
+        
     </article> <!-- product-info-aside .// -->
 </form>
             </main> <!-- col.// -->
