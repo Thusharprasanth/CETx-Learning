@@ -1,3 +1,4 @@
+from django.core import paginator
 from django.db import models
 from category.models import Category
 from courses.models import Course
@@ -6,18 +7,23 @@ from django.shortcuts import get_object_or_404, render, HttpResponse
 from .models import Course
 from carts.models import CartItem, Cart
 from carts.views import _cart_id
+from django.core.paginator import Paginator
 
 # Create your views here.
 def store(request, category_slug=None):
     if category_slug != None:
         categories = get_object_or_404(Category, slug=category_slug)
         courses = Course.objects.filter(category=categories, is_available=True)
-        course_count = courses.count()
+        
     else:
         courses = Course.objects.all().filter(is_available=True)
         course_count = courses.count()
+        paginator = Paginator(courses,8)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        course_count = courses.count()
     context = {
-        'courses' : courses,
+        'courses' : page_obj,
         'course_count' : course_count
     }
     return render(request , 'store/store.html', context)

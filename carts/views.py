@@ -26,6 +26,7 @@ def cart(request):
         'grand_total' : grand_total
     }
     return render(request, 'store/carts.html', context)
+    
 def remove_cart(request, course_id):
     course = Course.objects.get(id=course_id)
     cart = Cart.objects.get(cart_id=_cart_id(request))
@@ -59,4 +60,11 @@ def add_cart(request, course_id):
         )
     cart_item.save()
     
+    return redirect('cart')
+
+def remove(request, course_id):
+    course = Course.objects.get(id=course_id)
+    cart = Cart.objects.get(cart_id=_cart_id(request))
+    cart_item = CartItem.objects.filter(cart=cart, course=course)
+    cart_item.delete()
     return redirect('cart')
